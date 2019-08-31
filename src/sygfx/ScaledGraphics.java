@@ -26,7 +26,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Shape;
 import java.awt.Stroke;
@@ -35,8 +34,6 @@ import java.awt.font.GlyphVector;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.ImageObserver;
 import sygfx.util.Anchor;
-import sygfx.util.DimensionD;
-import sygfx.util.PointD;
 import sygfx.util.Rectangle;
 import sygfx.util.RectangleD;
 

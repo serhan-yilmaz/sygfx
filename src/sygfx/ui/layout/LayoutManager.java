@@ -7,7 +7,6 @@ package sygfx.ui.layout;
 
 import java.awt.Dimension;
 import sygfx.ui.Container;
-import sygfx.ui.Container;
 
 /**
  *

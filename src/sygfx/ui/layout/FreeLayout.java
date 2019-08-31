@@ -5,13 +5,10 @@
  */
 package sygfx.ui.layout;
 
-import sygfx.ui.layout.LayoutManager;
 import java.awt.Dimension;
 import java.awt.Point;
 import sygfx.ui.Container;
-import sygfx.ui.Container;
 import sygfx.util.Anchor;
-import sygfx.util.Rectangle;
 
 /**
  *

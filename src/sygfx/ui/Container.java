@@ -12,8 +12,6 @@ import sygfx.ScaledGraphics;
 import sygfx.border.Border;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Shape;
@@ -21,8 +19,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
-import javax.swing.JLabel;
-import sygfx.util.EventListenerList;
 import sygfx.util.Anchor;
 import sygfx.util.Rectangle;
 
@@ -51,7 +47,8 @@ public abstract class Container {
     protected Dimension size = new Dimension(0, 0);
     protected Dimension preferredSize = new Dimension(0, 0);
     protected Anchor placementAnchor = Anchor.NORTHWEST;
-    protected LayoutManager layout = new FlowLayout(FlowLayout.HORIZONTAL, Anchor.NORTH);
+    protected LayoutManager layout = 
+            new FlowLayout(FlowLayout.HORIZONTAL, Anchor.NORTH);
     
     private Container parent = null;
     
@@ -83,7 +80,8 @@ public abstract class Container {
         children.add(co);
         childrenConstraints.add(constraints);
         if(co.parent != null){
-            throw new IllegalArgumentException("Component already have an ancestor!");
+            throw new IllegalArgumentException(
+                    "Component already have an ancestor!");
         }
         co.parent = this;
         if(layout != null){
@@ -120,7 +118,8 @@ public abstract class Container {
     }
     
     public Insets getInsets(){
-        return new Insets(position.y, position.x, position.y + size.height, position.x + size.width);
+        return new Insets(position.y, position.x, 
+                position.y + size.height, position.x + size.width);
     }
     
     public Anchor getPlacementAnchor(){
@@ -202,7 +201,8 @@ public abstract class Container {
         if(layout != null){
             layout.removeAll();
             for(int i = 0; i < children.size(); i++){
-                layout.addComponent(children.get(i), childrenConstraints.get(i));
+                layout.addComponent(children.get(i), 
+                        childrenConstraints.get(i));
             }
         }
         this.layout = layout;
@@ -260,14 +260,14 @@ public abstract class Container {
         if(isVisible()){
             Shape clip = g.getClip();
             
-            
             g.setAnchor(Anchor.NORTHWEST);
             g.clipRect(position.x, position.y, size.width, size.height);
 //            Shape borderClip = g.getClip();
             
             Rectangle r = getInnerRectangle();
 //            Point p = Anchor.NORTHWEST.transform(position, size, placementAnchor);
-            Point p = Anchor.NORTHWEST.transform(r.getPoint(), r.getDimension(), placementAnchor);
+            Point p = Anchor.NORTHWEST.transform(r.getPoint(), 
+                    r.getDimension(), placementAnchor);
             Scale s = new Scale(p.x, p.y);
             ScaledGraphics g2 = new ScaledGraphics(g, s);
             
@@ -280,20 +280,11 @@ public abstract class Container {
                 co.paint(g2);
             }
             
-//            g.setClip(borderClip);
-//            g.setClip(clip);
             if(border != null){
                 border.paint(g, getInsets());
             }
             
             g.setClip(clip);
-            
-            
-//            if(getComponentCount() == 0){
-//                g2.setAnchor(Anchor.CENTER);
-//                g2.setColor(Color.MAGENTA);
-//                g2.fillRect(0, 0, 10, 10);
-//            }
         }
     }
     
@@ -345,11 +336,9 @@ public abstract class Container {
     }
 
     private boolean contains(Point p, Rectangle rect){
-//        Point p2 = placementAnchor.transform(p, rect.getDimension(), Anchor.NORTHWEST);
         boolean wX = (p.x <= (rect.x + rect.width)) & (p.x >= rect.x);
         boolean wY = (p.y <= (rect.y + rect.height)) & (p.y >= rect.y);
         return wX & wY;
-//        return true;
     }
     
     protected boolean processMouseEvent(MouseEvent e){
@@ -367,11 +356,6 @@ public abstract class Container {
         Point p2 = Anchor.NORTHWEST.transform(r.getPoint(), 
                 r.getDimension(), placementAnchor);
         e.translatePoint(-p2.x, -p2.y);
-//        if(e.getID() == MouseEvent.MOUSE_CLICKED){
-////            System.out.println(p2);
-//            System.out.println(getSize() + " - " + getPosition());
-//            System.out.println("true:" + e.getPoint());
-//        }
         for(Container c: children){
             if(e.isConsumed()){
                 return false;
@@ -389,11 +373,6 @@ public abstract class Container {
     }
     
     private void processMouseListener(MouseEvent e){
-//        if(e.getID() == MouseEvent.MOUSE_CLICKED){
-////            System.out.println(p2);
-//            System.out.println(getSize() + " - " + getPosition());
-//            System.out.println("true:" + e.getPoint());
-//        }
         if(mouseListener == null){
             return;
         }

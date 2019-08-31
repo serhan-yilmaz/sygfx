@@ -115,7 +115,6 @@ public class Button extends Container{
         if(b){
             if(e.getID() == MouseEvent.MOUSE_PRESSED){
                 selected = true;
-                System.out.println("Selected = true");
             }
             if(e.getID() == MouseEvent.MOUSE_RELEASED){
                 if(selected){
@@ -124,7 +123,6 @@ public class Button extends Container{
                     processActionListener(event);
                 }
                 selected = false;
-                System.out.println("Selected = false");
             }
         }
         return b;

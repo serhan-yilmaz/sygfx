@@ -5,11 +5,8 @@
  */
 package sygfx.ui.layout;
 
-import sygfx.ui.layout.AbstractLayout;
 import java.awt.Dimension;
-import java.awt.Insets;
 import java.awt.Point;
-import sygfx.ui.Container;
 import sygfx.ui.Container;
 import sygfx.util.alignment.Alignment;
 import sygfx.util.Anchor;

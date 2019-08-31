@@ -10,7 +10,6 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -18,9 +17,6 @@ import javax.swing.JPanel;
 import sygfx.Layer;
 import sygfx.Scale;
 import sygfx.ScaledGraphics;
-import sygfx.util.PointD;
-import static tester.TestCanvas.DEFAULT_HEIGHT;
-import static tester.TestCanvas.DEFAULT_WIDTH;
 
 /**
  *
@@ -108,14 +104,7 @@ public class JCanvas extends JPanel{
     private void directMouseEvent(MouseEvent e){
         Point p = e.getPoint();
         Point p2 = windowScale.inverse().transform(e.getPoint()).toPoint();
-//        if(e.getID() == MouseEvent.MOUSE_CLICKED){
-//            System.out.println(p);
-////            System.out.println(p2.toPoint());
-//            e.translatePoint(p2.x - p.x, p2.y - p.y);
-//            System.out.println(e.getPoint());
-//        }
         e.translatePoint(p2.x - p.x, p2.y - p.y);
-        
         if(window != null){
             window.processMouseEvent(e);
         }
@@ -135,19 +124,8 @@ public class JCanvas extends JPanel{
         return this.window;
     }
     
-//    public void setWindow(Window w){
-//        this.window = w;
-//    }
-    
-//    @Override
-//    public void addComponentListener(ComponentListener l){
-//        super.addComponentListener(l);
-//    }
-    
-    
     @Override
     public Dimension getPreferredSize(){
         return new Dimension(resolution_width, resolution_height);
     }
-    
 }

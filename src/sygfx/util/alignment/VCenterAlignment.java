@@ -5,8 +5,6 @@
  */
 package sygfx.util.alignment;
 
-import java.awt.Dimension;
-
 /**
  *
  * @author Serhan

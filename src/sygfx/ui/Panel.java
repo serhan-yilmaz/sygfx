@@ -6,7 +6,6 @@
 package sygfx.ui;
 
 import sygfx.ScaledGraphics;
-import java.awt.Dimension;
 
 /**
  *
